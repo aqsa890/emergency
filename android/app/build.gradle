@@ -1,0 +1,42 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
+android {
+    namespace = "com.example.emergency"
+    compileSdk = 34 // Replace flutter.compileSdkVersion if you are not using the variable.
+
+    ndkVersion = flutter.ndkVersion // Ensure this matches the NDK version installed via SDK Manager.
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17 // Update to Java 11 for compatibility.
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = "11" // Ensure this matches the Java version.
+    }
+
+    defaultConfig {
+        applicationId = "com.example.emergency" // Your unique Application ID.
+        minSdk = 21 // Replace flutter.minSdkVersion with a specific value if necessary.
+        targetSdk = 34 // Replace flutter.targetSdkVersion if not dynamically defined.
+        versionCode = 1 // Replace flutter.versionCode with a specific value.
+        versionName = "1.0.0" // Replace flutter.versionName with a specific value.
+    }
+
+    buildTypes {
+        release {
+            signingConfig = signingConfigs.debug // Update this with your release signing config.
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+flutter {
+    source = "../.."
+}
